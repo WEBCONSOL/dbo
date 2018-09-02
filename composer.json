@@ -1,0 +1,43 @@
+{
+    "name": "webconsol/dbo",
+    "version": "dev-master",
+    "description": "WEBCONSOL Database Object",
+    "type": "library",
+    "keywords": ["template engine"],
+    "homepage": "https://github.com/WEBCONSOL/dbo",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sothea Nim",
+            "email": "sothea.nim@webconsol.com",
+            "homepage": "https://www.webconsol.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "webconsol/dbo",
+                "version": "dev-master",
+                "source": {
+                    "url": "git@github.com:WEBCONSOL/dbo.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "psr-0" : {
+                        "Database\\" : "src/"
+                    }
+                }
+            }
+        }
+    ],
+    "autoload": {
+        "psr-0" : {
+            "Database\\" : "src/"
+        }
+    }
+}
