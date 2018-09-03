@@ -2,6 +2,8 @@
 
 namespace Database;
 
+use Models\ListModel;
+
 interface Driver
 {
     function executeStatement($statement): bool;
@@ -13,6 +15,10 @@ interface Driver
     function tableColumns(string $name): array;
 
     function tables(): array;
+
+    function select(ListModel $argc): array;
+
+    function selectOne(ListModel $argc): array;
 
     function quote($str): string;
 

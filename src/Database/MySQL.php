@@ -2,6 +2,8 @@
 
 namespace Database;
 
+use Models\ListModel;
+
 final class MySQL implements Driver
 {
     private $pdo = null;
@@ -43,7 +45,30 @@ final class MySQL implements Driver
         return $result ? $result : array();
     }
 
+    public function select(ListModel $argc): array {
+        $statement = $this->prepareSelectStatement($argc);
+        return $statement ? $this->loadResults($statement) : array();
+    }
+
+    public function selectOne(ListModel $argc): array {
+        $statement = $this->prepareSelectStatement($argc);
+        return $statement ? $this->loadResult($statement) : array();
+    }
+
     public function quote($str): string{return $this->pdo->quote($str);}
 
     public function getLastInsertId(){return $this->pdo->lastInsertId();}
+
+    private function prepareSelectStatement(ListModel $argc): string {
+        $statement = '';
+        if ($argc->has(SQL_TB)) {
+            $fields = $argc->get(SQL_FIELDS, '*');
+            $condition = $argc->get(SQL_CONDITIONS, '1');
+            $orderby = $argc->has(SQL_ORDER_BY) ? ' ORDER BY ' . $argc->get(SQL_ORDER_BY) : '';
+            $groupby = $argc->has(SQL_GROUP_BY) ? ' GROUP BY ' . $argc->get(SQL_GROUP_BY) : '';
+            $limit = $argc->has(SQL_LIMIT_START) && $argc->has(SQL_LIMIT_END) ? ' LIMIT ' . $argc->get(SQL_LIMIT_START) . ', ' . $argc->get(SQL_LIMIT_END) : '';
+            $statement = 'SELECT ' . $fields . ' FROM ' . $argc->get(SQL_TB) . ' WHERE ' . $condition . $groupby . $orderby . $limit;
+        }
+        return $statement;
+    }
 }
