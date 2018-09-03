@@ -4,11 +4,17 @@ namespace Database;
 
 interface Driver
 {
-    function executeStatement($statement);
+    function executeStatement($statement): bool;
 
-    function loadResult($statement);
+    function loadResult($statement): array;
 
-    function loadResults($statement);
+    function loadResults($statement): array;
+
+    function tableColumns(string $name): array;
+
+    function tables(): array;
+
+    function quote($str): string;
 
     function getLastInsertId();
 }

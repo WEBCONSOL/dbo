@@ -2,7 +2,7 @@
 
 namespace Database;
 
-class DefaultDriver implements Driver
+final class DefaultDriver implements Driver
 {
     public function executeStatement($statement){}
 

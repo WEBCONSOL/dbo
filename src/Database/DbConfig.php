@@ -16,15 +16,22 @@ class DbConfig
 
     function __construct($val) {$this->reset($val);}
 
-    public function getDSN(): string {return $this->getDriver().':host='.$this->getHost().';dbname='.$this->getDbName().';charset='.$this->getCharset();}
+    public function getDSN(): string {
+        return $this->getDriver()
+            . ':dbname='.$this->getDbName()
+            . ';host='.$this->getHost()
+            . ';port='.$this->getPort()
+            . ';charset='.$this->getCharset()
+            ;
+    }
 
-    public function getDriver(): string {return strtolower(str_replace('pdo_', '', $this->get(self::DRIVER)));}
+    public function getDriver(): string {return strtolower($this->get(self::DRIVER));}
     public function getHost(): string {return strtolower($this->get(self::HOST));}
     public function getPort(): string {return strtolower($this->get(self::PORT));}
     public function getDbName(): string {return strtolower($this->get(self::DBNAME));}
-    public function getUser(): string {return strtolower($this->get(self::USER));}
-    public function getPassword(): string {return strtolower($this->get(self::PASSWORD));}
-    public function getCharset(): string {return strtolower($this->get(self::CHARSET, 'UTF-8'));}
+    public function getUser(): string {return $this->get(self::USER);}
+    public function getPassword(): string {return $this->get(self::PASSWORD);}
+    public function getCharset(): string {return strtolower($this->get(self::CHARSET, 'utf8'));}
     public function getOptions(): array {return $this->has(self::OPTIONS) && is_array($this->data[self::OPTIONS]) ? $this->data[self::OPTIONS] : array();}
     public function getAsArray(): array {return $this->data;}
 
