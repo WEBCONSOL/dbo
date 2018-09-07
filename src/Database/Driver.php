@@ -20,7 +20,9 @@ interface Driver
 
     function selectOne(ListModel $argc): array;
 
-    function quote($str): string;
+    function quote(string $str): string;
+
+    function name(string $str): string;
 
     function getLastInsertId();
 }

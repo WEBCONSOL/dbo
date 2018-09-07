@@ -55,7 +55,9 @@ final class MySQL implements Driver
         return $statement ? $this->loadResult($statement) : array();
     }
 
-    public function quote($str): string{return $this->pdo->quote($str);}
+    public function quote(string $str): string{return $this->pdo->quote($str);}
+
+    public function name(string $str): string{return '`'.$str.'`';}
 
     public function getLastInsertId(){return $this->pdo->lastInsertId();}
 
