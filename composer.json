@@ -1,6 +1,6 @@
 {
     "name": "webconsol/dbo",
-    "version": "dev-master",
+    "version": "1.0.0",
     "description": "WEBCONSOL Database Object",
     "type": "library",
     "keywords": ["template engine"],

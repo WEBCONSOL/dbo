@@ -2,7 +2,7 @@
 
 namespace Database;
 
-use Models\ListModel;
+use WC\Models\ListModel;
 
 interface Driver
 {
