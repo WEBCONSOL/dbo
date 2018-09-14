@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "WEBCONSOL Database Object",
     "type": "library",
-    "keywords": ["template engine"],
+    "keywords": ["database"],
     "homepage": "https://github.com/WEBCONSOL/dbo",
     "license": "MIT",
     "authors": [
