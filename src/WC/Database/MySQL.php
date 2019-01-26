@@ -1,6 +1,6 @@
 <?php
 
-namespace Database;
+namespace WC\Database;
 
 use WC\Models\ListModel;
 
