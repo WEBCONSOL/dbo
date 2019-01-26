@@ -16,7 +16,8 @@
     "require": {
         "php": ">=7.0",
         "webconsol/php-data-models": "1.0.0",
-        "ext-json": "^1.6"
+        "ext-json": "^1.5",
+        "ext-pdo": "^7.1"
     },
     "autoload": {
         "psr-0" : {
